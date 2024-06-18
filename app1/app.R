@@ -1,35 +1,8 @@
-# install.packages('shiny')
-# library(shiny)
-#
-# ui <- fluidPage(
-#
-# )
-#
-# server <- function(input, output, session) {
-#
-# }
-#
-# shinyApp(ui, server)
-
-# Load packages
-
 library(shiny)
 library(bslib)
 library(ggplot2)
 
-# Get the data
-
-# file <- "https://github.com/rstudio-education/shiny-course/raw/main/movies.RData"
-destfile <- "movies.RData"
-
-# download.file(file, destfile)
-
-# Load data
-
-load(destfile)
-
 # Define UI
-
 ui <- page_sidebar(
   sidebar = sidebar(
     # Select variable for y-axis
@@ -52,8 +25,8 @@ ui <- page_sidebar(
 )
 
 # Define server
-
 server <- function(input, output, session) {
+  movies <- read.csv('movies.csv')
   output$scatterplot <- renderPlot({
     ggplot(data = movies, aes_string(x = input$x, y = input$y)) +
       geom_point()
@@ -61,5 +34,4 @@ server <- function(input, output, session) {
 }
 
 # Create a Shiny app object
-
 shinyApp(ui = ui, server = server)

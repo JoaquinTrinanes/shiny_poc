@@ -22,14 +22,23 @@
         {
           devenv.shells.default =
             let
-              R = pkgs.rWrapper.override {
-                packages = builtins.attrValues { inherit (pkgs.rPackages) formatR shiny ggplot2; };
+              rPackages = builtins.attrValues {
+                inherit (pkgs.rPackages)
+                  formatR
+                  shiny
+                  ggplot2
+                  shinylive
+                  httpuv
+                  rlang
+                  ;
               };
+              R = pkgs.rWrapper.override { packages = rPackages; };
+              rstudio = pkgs.rstudioWrapper.override { packages = rPackages; };
             in
             {
               packages = builtins.attrValues {
+                inherit rstudio;
                 inherit (pkgs) bashInteractive;
-                # inherit rstudio;
               };
               languages.r = {
                 enable = true;
