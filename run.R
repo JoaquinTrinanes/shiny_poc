@@ -1,2 +1,1 @@
-library(shiny)
-runApp("app1")
+shiny::runApp("app1")
