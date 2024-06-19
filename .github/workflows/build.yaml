@@ -19,7 +19,8 @@ jobs:
 
       - name: Build shinylive site
         run: |
-          shinylive::export(appdir = "app1", destdir = "build")
+          shinylive::export(appdir="app1", destdir="build")
+          shinylive::export(appdir="app2", destdir="build", subdir = "app2")
         shell: "Rscript {0}"
 
       - name: Deploy 🚀
