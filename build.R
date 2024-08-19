@@ -1,2 +1,4 @@
-shinylive::export(appdir="app1", destdir="docs")
-shinylive::export(appdir="app1", destdir="docs", subdir="app2")
+shinylive::export(appdir="processing_plants_points_map", destdir="docs")
+shinylive::export(appdir="species_by_county_map", destdir="docs", subdir="species_by_county_map")
+shinylive::export(appdir="species_by_state_bargraph", destdir="docs", subdir="species_by_state_bargraph")
+shinylive::export(appdir="state_by_species_hexagons", destdir="docs", subdir="state_by_species_hexagons")
